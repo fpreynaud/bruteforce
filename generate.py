@@ -2,7 +2,7 @@
 Bruteforce generators
 """
 import requests
-from bruteforce.alphabets import *
+from alphabets import *
 
 def bf(alphabet='01', length=4):
 	"""
@@ -26,3 +26,14 @@ def bruteforce(alphabet='01', minlen=1, maxlen=5):
 	for length in range(minlen, maxlen+1):
 		for word in bf(alphabet,length):
 			yield word
+
+if __name__ == '__main__':
+	import argparse
+	parser = argparse.ArgumentParser()
+	parser.add_argument('length', type=int)
+	parser.add_argument('alphabet')
+	args = parser.parse_args()
+	for word in bruteforce(args.alphabet, args.length, args.length):
+		print(word)
+
+
